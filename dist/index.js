@@ -511,7 +511,7 @@ async function commandUpdateUserConfig(message, command, subcommand) {
 async function commandFetchUpdate(message, command, subcommand) {
   const config = {
     headers: {
-      "User-Agent": "TBXark/ChatGPT-Telegram-Workers"
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0"
     }
   };
   const ts = "https://raw.githubusercontent.com/TBXark/ChatGPT-Telegram-Workers/master/dist/timestamp";
