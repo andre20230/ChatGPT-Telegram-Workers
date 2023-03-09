@@ -187,7 +187,7 @@ var SHARE_CONTEXT = {
   // chat type: private/group/supergroup, from message.chat.type
   chatId: null,
   // chat id, private type: chatid, group/supergroup type: group id
-  speekerId: null
+  speakerId: null
   // chat id
 };
 async function initUserConfig(id) {
@@ -575,7 +575,7 @@ async function handleCommandMessage(message) {
         if (command.needAuth) {
           const roleList = command.needAuth();
           if (roleList) {
-            const chatRole = await getChatRole(SHARE_CONTEXT.speekerId);
+            const chatRole = await getChatRole(SHARE_CONTEXT.speakerId);
             if (chatRole === null) {
               return sendMessageToTelegram("Authentication failed");
             }
@@ -694,7 +694,7 @@ async function msgInitChatContext(message) {
   SHARE_CONTEXT.groupAdminKey = groupAdminKey;
   SHARE_CONTEXT.chatType = message.chat?.type;
   SHARE_CONTEXT.chatId = message.chat.id;
-  SHARE_CONTEXT.speekerId = message.from.id || message.chat.id;
+  SHARE_CONTEXT.speakerId = message.from.id || message.chat.id;
   return null;
 }
 async function msgSaveLastMessage(message) {
