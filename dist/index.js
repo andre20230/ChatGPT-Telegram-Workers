@@ -162,24 +162,19 @@ function errorToString(e) {
 
 // src/context.js
 var USER_CONFIG = {
-  // 系统初始化消息
   SYSTEM_INIT_MESSAGE: ENV.SYSTEM_INIT_MESSAGE,
-  // OpenAI API 额外参数
   OPENAI_API_EXTRA_PARAMS: {}
 };
 var CURRENT_CHAT_CONTEXT = {
   chat_id: null,
   reply_to_message_id: null,
-  // 如果是群组，这个值为消息ID，否则为null
+  // if it is group msg, it should be msg id, otherwise null
   parse_mode: "Markdown"
 };
 var SHARE_CONTEXT = {
   currentBotId: null,
-  // 当前机器人 ID
   currentBotToken: null,
-  // 当前机器人 Token
   currentBotName: null,
-  // 当前机器人名称: xxx_bot
   chatHistoryKey: null,
   // history:chat_id:bot_id:(from_id)
   configStoreKey: null,
@@ -189,11 +184,11 @@ var SHARE_CONTEXT = {
   usageKey: null,
   // usage:bot_id
   chatType: null,
-  // 会话场景, private/group/supergroup 等, 来源 message.chat.type
+  // chat type: private/group/supergroup, from message.chat.type
   chatId: null,
-  // 会话 id, private 场景为发言人 id, group/supergroup 场景为群组 id
+  // chat id, private type: chatid, group/supergroup type: group id
   speekerId: null
-  // 发言人 id
+  // chat id
 };
 async function initUserConfig(id) {
   return retry(async function() {
