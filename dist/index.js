@@ -564,7 +564,7 @@ async function commandUsage() {
 async function commandSystem(message) {
   let msg = `System info:
 `;
-  msg += "Current chat model:" + ENV.CHAT_MODEL + "\n";
+  msg += "Current chat model: " + ENV.CHAT_MODEL + "\n";
   return sendMessageToTelegram(msg);
 }
 async function handleCommandMessage(message) {
