@@ -1,6 +1,6 @@
 # 部署流程
 
-[English Version](./en/DEPLOY_EN.md)
+[English Version](./en/doc/DEPLOY.md)
 
 ## 视频教程
 
