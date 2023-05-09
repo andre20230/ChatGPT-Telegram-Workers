@@ -51,7 +51,7 @@ var ENV = {
   */
   I18N: null,
   // 语言
-  LANGUAGE: "zh-cn",
+  LANGUAGE: "en-us",
   // DEBUG 专用
   // 调试模式
   DEBUG_MODE: false,
@@ -1491,7 +1491,7 @@ async function commandGenerateImg(message, command, subcommand, context) {
   }
 }
 async function commandGetHelp(message, command, subcommand, context) {
-  const helpMsg = ENV.I18N.command.help.summary + Object.keys(commandHandlers).map((key) => `${key}\uFF1A${ENV.I18N.command.help[key.substring(1)]}`).join("\n");
+  const helpMsg = ENV.I18N.command.help.summary + Object.keys(commandHandlers).map((key) => `${key}: ${ENV.I18N.command.help[key.substring(1)]}`).join("\n");
   return sendMessageToTelegramWithContext(context)(helpMsg);
 }
 async function commandCreateNewChatContext(message, command, subcommand, context) {
@@ -1969,17 +1969,11 @@ async function handleMessage(request) {
   const message = await loadMessage(request, context);
   const handlers = [
     msgInitChatContext,
-    // 初始化聊天上下文: 生成chat_id, reply_to_message_id(群组消息), SHARE_CONTEXT
     msgSaveLastMessage,
-    // 保存最后一条消息
     msgCheckEnvIsReady,
-    // 检查环境是否准备好: API_KEY, DATABASE
     msgProcessByChatType,
-    // 根据类型对消息进一步处理
     msgIgnoreOldMessage,
-    // 忽略旧消息
     msgChatWithOpenAI
-    // 与OpenAI聊天
   ];
   for (const handler of handlers) {
     try {
